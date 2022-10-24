@@ -1,0 +1,125 @@
+require:
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rails
+
+Rails:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+
+AllCops:
+  TargetRubyVersion: 3.0
+  # Auto-enable all new pending cops between releases
+  NewCops: enable
+  # Mostly disabling the majority of the Rails-generated configuration files
+  # We should try to at least manually maintain the frozen string litteral
+  # magic comment rule, if possible
+  Exclude:
+    - "config/application.rb"
+    - "config/boot.rb"
+    - "config/puma.rb"
+    - "config/environments/**/*"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "db/**/*"
+    - "bin/**/*"
+    - "app/javascript/**/*"
+    - "tmp/**/*"
+    - "storage/**/*"
+
+Layout/LineLength:
+  Max: 180
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+Minitest/MultipleAssertions:
+  Max: 50
+  Exclude:
+    - test/policies/**/*
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 50
+  Exclude:
+    - test/**/*
+    - config/routes.rb
+
+Metrics/ClassLength:
+  Max: 250
+  Exclude:
+    - test/**/*
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - test/**/*
+
+Metrics/ModuleLength:
+  Exclude:
+    - app/helpers/application_helper.rb
+
+Metrics/ParameterLists:
+  Max: 8
+  Exclude:
+    - app/jobs/**/*
+
+Metrics/PerceivedComplexity:
+  Max: 14
+
+Rails/EnvironmentVariableAccess:
+  AllowReads: true
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+Rails/HelperInstanceVariable:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/RakeEnvironment:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - test/**/*
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Include:
+    - app/models/**/*
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/FetchEnvVar:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/WordArray:
+  EnforcedStyle: brackets
